@@ -1,0 +1,110 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: var(--spacing-lg);
+  background: linear-gradient(
+    135deg,
+    var(--lavender-50) 0%,
+    var(--blush-50) 50%,
+    var(--lavender-100) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 700px;
+  width: 100%;
+}
+
+.title {
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--lavender-500);
+  margin-bottom: var(--spacing-2xl);
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 500;
+  border-radius: 50px;
+  transition: all var(--transition-normal);
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-soft);
+  min-width: 160px;
+}
+
+.yesButton {
+  background: linear-gradient(135deg, var(--lavender-400) 0%, var(--lavender-500) 100%);
+  color: white;
+}
+
+.yesButton:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.noButton {
+  background: linear-gradient(135deg, var(--blush-100) 0%, var(--blush-200) 100%);
+  color: var(--neutral-900);
+}
+
+.noButton:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.absolutelyButton {
+  background: linear-gradient(135deg, var(--rose-400) 0%, var(--rose-500) 100%);
+  color: white;
+}
+
+.absolutelyButton:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.subtitle {
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  color: var(--lavender-400);
+  font-style: italic;
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.5rem;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 640px) {
+  .title {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button {
+    min-width: 200px;
+  }
+}

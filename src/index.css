@@ -1,0 +1,133 @@
+:root {
+  /* Color Palette - Refined Romantic Minimalism */
+  --lavender-50: #FAF7FB;
+  --lavender-100: #F3EBF7;
+  --lavender-200: #E8DAEF;
+  --lavender-300: #DCC6E0;
+  --lavender-400: #C7A4D4;
+  --lavender-500: #B189C6;
+
+  --blush-50: #FFF9F9;
+  --blush-100: #FFE5E5;
+  --blush-200: #FFC5C5;
+  --blush-300: #FFA5A5;
+  --blush-400: #FF8585;
+
+  --rose-300: #FDA4AF;
+  --rose-400: #FB7185;
+  --rose-500: #F43F5E;
+
+  --neutral-50: #FAFAFA;
+  --neutral-100: #F5F5F5;
+  --neutral-900: #1A1A1A;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+
+  /* Transitions */
+  --transition-fast: 200ms ease-in-out;
+  --transition-normal: 400ms ease-in-out;
+  --transition-slow: 600ms ease-in-out;
+  --transition-elegant: 800ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px rgba(220, 198, 224, 0.2);
+  --shadow-medium: 0 8px 40px rgba(220, 198, 224, 0.3);
+  --shadow-large: 0 16px 60px rgba(220, 198, 224, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--neutral-900);
+  background: linear-gradient(
+    135deg,
+    var(--lavender-50) 0%,
+    var(--blush-50) 50%,
+    var(--lavender-100) 100%
+  );
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--lavender-400);
+  outline-offset: 2px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lavender-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lavender-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lavender-400);
+}
+
+/* Selection */
+::selection {
+  background: var(--lavender-300);
+  color: var(--neutral-900);
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,199 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--lavender-50) 0%,
+    var(--blush-50) 50%,
+    var(--lavender-100) 100%
+  );
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-family: var(--font-display);
+  color: var(--lavender-500);
+  font-weight: 400;
+  margin-bottom: var(--spacing-sm);
+  font-style: italic;
+}
+
+.moves {
+  font-size: 1.125rem;
+  color: var(--lavender-400);
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--spacing-md);
+  max-width: 1000px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.cardWrapper {
+  aspect-ratio: 3/4;
+  position: relative;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cardFront {
+  background: linear-gradient(135deg, var(--lavender-200) 0%, var(--blush-200) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heartPattern {
+  font-size: 3rem;
+  color: var(--rose-300);
+  opacity: 0.4;
+}
+
+.cardBack {
+  background: white;
+  transform: rotateY(180deg);
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.loading {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loadingText {
+  font-size: 1.5rem;
+  color: var(--lavender-400);
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+.loadingHeart {
+  font-size: 3rem;
+  color: var(--rose-400);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.finalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(250, 247, 251, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: var(--spacing-lg);
+}
+
+.finalContent {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.finalImage {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: var(--shadow-large);
+  margin-bottom: var(--spacing-xl);
+}
+
+.finalMessage {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-family: var(--font-display);
+  color: var(--lavender-500);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xs);
+  }
+
+  .heartPattern {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

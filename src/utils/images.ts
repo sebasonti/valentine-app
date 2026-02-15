@@ -1,13 +1,15 @@
 /**
  * Image paths for the application
  */
+const BASE_URL = import.meta.env.BASE_URL;
+
 export const SLIDESHOW_IMAGES = Array.from(
   { length: 10 },
-  (_, i) => `/images/slideshow/${String(i + 1).padStart(3, '0')}.png`
+  (_, i) => `${BASE_URL}images/slideshow/${String(i + 1).padStart(3, '0')}.png`
 );
 
-export const FINAL_IMAGE = '/images/final_image.png';
-export const PIG_ANIMATION = '/images/pig_animation.gif';
+export const FINAL_IMAGE = `${BASE_URL}images/final_image.png`;
+export const PIG_ANIMATION = `${BASE_URL}images/pig_animation.gif`;
 
 /**
  * Preload images for smooth transitions

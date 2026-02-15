@@ -9,7 +9,7 @@ export const SLIDESHOW_IMAGES = Array.from(
 );
 
 export const FINAL_IMAGE = `${BASE_URL}images/final_image.png`;
-export const PIG_ANIMATION = `${BASE_URL}images/pig_animation.gif`;
+export const PIG_ANIMATION = `${BASE_URL}images/pig_animation_3.gif`;
 
 /**
  * Preload images for smooth transitions

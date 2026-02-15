@@ -49,16 +49,30 @@ const FABMenu: React.FC<FABMenuProps> = ({
   };
 
   return (
-    <div className={styled.container}>
+    <>
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className={styled.menuItems}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
+            className={styled.backdrop}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-          >
+            onClick={() => setIsOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      <div className={styled.container}>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className={styled.menuItems}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.2 }}
+            >
             <motion.button
               className={styled.menuItem}
               onClick={handleGallery}
@@ -156,17 +170,18 @@ const FABMenu: React.FC<FABMenuProps> = ({
         )}
       </AnimatePresence>
 
-      <motion.button
-        className={styled.fab}
-        onClick={handleToggle}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        animate={{ rotate: isOpen ? 180 : 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <img src={PIG_ANIMATION} alt="Menu" className={styled.pigImage} />
-      </motion.button>
-    </div>
+        <motion.button
+          className={styled.fab}
+          onClick={handleToggle}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <img src={PIG_ANIMATION} alt="Menu" className={styled.pigImage} />
+        </motion.button>
+      </div>
+    </>
   );
 };
 

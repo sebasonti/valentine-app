@@ -23,9 +23,14 @@ const MemoryGamePage: React.FC = () => {
   const [showFinalImage, setShowFinalImage] = useState(false);
 
   const initializeGame = useCallback(() => {
-    const cardPairs = SLIDESHOW_IMAGES.flatMap((image, index) => [
+    const cardPairs = SLIDESHOW_IMAGES.slice(0, 6).flatMap((image, index) => [
       { id: index * 2, imageUrl: image, isFlipped: false, isMatched: false },
-      { id: index * 2 + 1, imageUrl: image, isFlipped: false, isMatched: false },
+      {
+        id: index * 2 + 1,
+        imageUrl: image,
+        isFlipped: false,
+        isMatched: false,
+      },
     ]);
     setCards(shuffleArray(cardPairs));
     setFlippedCards([]);
@@ -137,6 +142,10 @@ const MemoryGamePage: React.FC = () => {
     setFlippedCards((prev) => [...prev, cardId]);
   };
 
+  const handleShowFinalMessage = () => {
+    setShowFinalImage(true);
+  };
+
   if (!isLoaded) {
     return (
       <div className={styled.container}>
@@ -154,7 +163,12 @@ const MemoryGamePage: React.FC = () => {
 
   return (
     <div className={styled.container}>
-      <FABMenu showRestart onRestart={initializeGame} />
+      <FABMenu
+        showRestart
+        onRestart={initializeGame}
+        showFinalMessage={showFinalImage}
+        onShowFinalMessage={handleShowFinalMessage}
+      />
 
       <AnimatePresence>
         {showFinalImage && (
@@ -170,14 +184,18 @@ const MemoryGamePage: React.FC = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <img src={FINAL_IMAGE} alt="Final message" className={styled.finalImage} />
+              <img
+                src={FINAL_IMAGE}
+                alt="Final message"
+                className={styled.finalImage}
+              />
               <motion.h2
                 className={styled.finalMessage}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                You will always be my chanchilove
+                I love you so, chanchilove
               </motion.h2>
             </motion.div>
           </motion.div>
@@ -213,14 +231,14 @@ const MemoryGamePage: React.FC = () => {
               >
                 <motion.div
                   className={`${styled.card} ${
-                    card.isFlipped || card.isMatched ? styled.flipped : ''
+                    card.isFlipped || card.isMatched ? styled.flipped : ""
                   }`}
                   onClick={() => handleCardClick(card.id)}
                   whileHover={{ scale: card.isMatched ? 1 : 1.05 }}
                   whileTap={{ scale: card.isMatched ? 1 : 0.95 }}
                   animate={{
                     rotateY: card.isFlipped || card.isMatched ? 180 : 0,
-                    opacity: card.isMatched ? 0.6 : 1,
+                    opacity: 1,
                   }}
                   transition={{ duration: 0.6 }}
                 >
@@ -228,7 +246,11 @@ const MemoryGamePage: React.FC = () => {
                     <div className={styled.heartPattern}>♥</div>
                   </div>
                   <div className={styled.cardBack}>
-                    <img src={card.imageUrl} alt="Card" className={styled.cardImage} />
+                    <img
+                      src={card.imageUrl}
+                      alt="Card"
+                      className={styled.cardImage}
+                    />
                   </div>
                 </motion.div>
               </motion.div>
